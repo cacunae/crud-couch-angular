@@ -1,0 +1,114 @@
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="../assets/logo-42labs.png" alt="" width="100" height="24" class="d-inline-block align-text-top">
+    </a>
+  </div>
+</nav>
+<br>
+<div class="input-group flex-nowrap" style="width: 61.2%; position: relative; padding-left: 430px; ">
+  <span class="input-group-text" id="addon-wrapping">@</span>
+  <input type="text"  [(ngModel)]="idurl" class="form-control" placeholder="Id" aria-label="Username" aria-describedby="addon-wrapping">
+</div>
+<br>
+
+<!-----------------------------BOTONES --------------------------->
+<div style="position: absolute; left: 30%; display: flex; flex-direction: row;  justify-content: space-between; width: 450px;border-bottom: 100%;">
+  <input class="btn btn-primary" style= "background-color: #1c9d43" (click)="toggleInput()"type="submit" value="Create">
+  <input class="btn btn-primary" (click)="toggle()" (click)="getDoc()" type="submit" value="Read">
+  <input class="btn btn-primary" style= "background-color: #f7ae42"(click)="toggleUpdate()" (click)="fillUpdate()" type="submit" value="Update">
+  <input class="btn btn-primary" style="background-color: #d8473e"(click)="deleteDoc()"type="submit" value="Delete">
+</div>
+<br>
+
+<!-------------------------CAMPOS DEL INSERT--------------------------->
+<div *ngIf="mostrarInput" style="width: 40%; margin-top: 50px; margin-left: 380px;">
+  <div class="input-group mb-3" >
+    <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+    <input type="text" #nombre [(ngModel)]="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default">Age</span>
+    <input type="text" #edad [(ngModel)]="age" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default">Sex</span>
+    <input type="text" #sexo [(ngModel)]="sex" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+  </div>
+  <input class="btn btn-primary" (click)="postDoc(usu)" (click)="nombre.value=''" (click)="edad.value=''" (click)="sexo.value=''"  type="submit" value="Confirm Create">
+</div>
+
+<!--------------------------CAMPOS DEL UPDATE------------------------------------>
+<div *ngIf="mostrarUpdate" style="width: 40%; margin-top: 50px; margin-left: 380px;">
+  <div class="input-group mb-3" >
+    <span class="input-group-text" id="inputGroup-sizing-default">Update Name</span>
+    <input type="text" #nombreUpdate [(ngModel)]="nameUpdate" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default">Update Age</span>
+    <input type="text" #edadUpdate [(ngModel)]="ageUpdate" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default">Update Sex</span>
+    <input type="text" #sexoUpdate [(ngModel)]="sexUpdate" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+  </div>
+  <input class="btn btn-primary" (click)="updateDoc()" (click)="nombreUpdate.value=''" (click)="edadUpdate.value=''" (click)="sexoUpdate.value=''"  type="submit" value="Confirm Update">
+</div>
+<!---------------------------------------------------------------------------->
+<br>
+<div style="position: relative; margin-top: 5%; left: 30%; width: 32%;">
+  <ul class="list-group" *ngIf="mostrar">
+    
+    <li class="list-group-item list-group-item-primary">DATOS</li>
+    <li class="list-group-item list-group-item-light">{{name}}</li>
+    <li class="list-group-item list-group-item-light">{{age}}</li>
+    <li class="list-group-item list-group-item-light">{{sex}}</li>
+    
+  
+  </ul>
+</div>
+
+<!--MODAL DE BORRAR
+<div class="text-right mt-4">
+  <div class="modal fade" id="BORRAR">
+    <div class="modal-dialog text-center">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div
+            class="modal-title"
+            style="padding: 1em 1em 0em 1em; width: 100%"
+          >
+            <h2 style="text-align: center">
+              ¿Está seguro de que quiere borrar este producto?
+            </h2>
+          </div>
+
+          <div style="text-align: center">
+            <div style="padding: 1em 1em 1em 1em; width: 100%">
+              <button
+                class="btn BtnDefault"
+                style="background-color: #d8473e; color: aliceblue; width: 89px"
+                type="reset"
+                data-dismiss="modal"
+                (click)="eliminarProducto(index)"
+              >
+                Borrar
+              </button>
+            </div>
+            <div>
+              <button
+                class="btn BtnDefault"
+                style="background-color: #f7ae42; color: aliceblue"
+                type="reset"
+                data-dismiss="modal"
+              >
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+-->
